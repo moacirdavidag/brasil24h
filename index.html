@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AO VIVO: Cobertura das Eleições 2025 em Tempo Real</title>
+
+    <meta
+      name="description"
+      content="Acompanhe a cobertura ao vivo das Eleições 2025. Atualizações em tempo real com os principais fatos, apurações e notícias."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <link
+      rel="canonical"
+      href="https://moacirdavidag.github.io/brasil24h"
+    />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="AO VIVO: Cobertura das Eleições 2025" />
+    <meta
+      property="og:description"
+      content="Veja agora a cobertura em tempo real das Eleições 2025, com atualizações ao vivo e notícias de última hora."
+    />
+    <meta
+      property="og:image"
+      content="https://moacirdavidag.github.io/brasil24h/eleicoes-2025.png"
+    />
+    <meta
+      property="og:url"
+      content="https://moacirdavidag.github.io/brasil24h"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AO VIVO: Eleições 2025" />
+    <meta
+      name="twitter:description"
+      content="Cobertura ao vivo com atualizações minuto a minuto das Eleições 2025."
+    />
+    <meta
+      name="twitter:image"
+      content="https://moacirdavidag.github.io/brasil24h/eleicoes-2025.png"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LiveBlogPosting",
+        "headline": "AO VIVO: Cobertura das Eleições 2025",
+        "description": "Atualizações ao vivo e em tempo real sobre as Eleições 2025 no Brasil.",
+        "url": "https://moacirdavidag.github.io/brasil24h",
+        "datePublished": "2025-06-09T12:00:00-03:00",
+        "coverageStartTime": "2025-06-09T12:00:00-03:00",
+        "coverageEndTime": "2025-06-10T23:59:00-03:00",
+        "liveBlogUpdate": [],
+        "author": {
+          "@type": "Organization",
+          "name": "Brasil 24H"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Brasil 24H",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://moacirdavidag.github.io/brasil24h/eleicoes-2025.png"
+          }
+        }
+      }
+    </script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 2rem;
+        background: #f9f9f9;
+      }
+      h1 {
+        color: #d32f2f;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        background: white;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-left: 5px solid #d32f2f;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>AO VIVO: Eleições 2025</h1>
+    <ul id="updates">
+    </ul>
+
+    <script>
+      const updatesEl = document.getElementById("updates");
+      const eventSource = new EventSource("http://localhost:3000/events");
+
+      eventSource.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${data.time}</strong>: ${data.message}`;
+        updatesEl.prepend(li);
+      };
+
+      eventSource.onerror = () => {
+        console.error("Erro na conexão SSE");
+      };
+    </script>
+  </body>
+</html>
