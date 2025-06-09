@@ -10,10 +10,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
-    <link
-      rel="canonical"
-      href="https://moacirdavidag.github.io/brasil24h"
-    />
+    <link rel="canonical" href="https://moacirdavidag.github.io/brasil24h" />
 
     <meta property="og:type" content="article" />
     <meta property="og:title" content="AO VIVO: Cobertura das Eleições 2025" />
@@ -51,7 +48,14 @@
         "datePublished": "2025-06-09T12:00:00-03:00",
         "coverageStartTime": "2025-06-09T12:00:00-03:00",
         "coverageEndTime": "2025-06-10T23:59:00-03:00",
-        "liveBlogUpdate": [],
+        "liveBlogUpdate": [
+          {
+            "@type": "BlogPosting",
+            "headline": "Urnas abertas em todo o Brasil",
+            "articleBody": "As urnas foram oficialmente abertas às 8h da manhã em todos os estados.",
+            "datePublished": "2025-06-09T08:00:00-03:00"
+          }
+        ],
         "author": {
           "@type": "Organization",
           "name": "Brasil 24H"
@@ -90,12 +94,11 @@
   </head>
   <body>
     <h1>AO VIVO: Eleições 2025</h1>
-    <ul id="updates">
-    </ul>
+    <ul id="updates"></ul>
 
     <script>
       const updatesEl = document.getElementById("updates");
-      const eventSource = new EventSource("http://localhost:3000/events");
+      const eventSource = new EventSource("https://brasil24h-api.onrender.com/events");
 
       eventSource.onmessage = (event) => {
         const data = JSON.parse(event.data);
